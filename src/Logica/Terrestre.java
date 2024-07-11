@@ -2,25 +2,34 @@ package Logica;
 
 public class Terrestre extends Vehiculo{
 
-	public Terrestre(int velocidadActual, int velocidadMaxima) {
+	protected double revolucionesMotor = 0;
+	
+	public Terrestre(double velocidadActual, double velocidadMaxima) {
 		
 		super(velocidadActual, velocidadMaxima);
 	}
 	
 	@Override
-	public void acelerar(int velocidad) {
+	public void acelerar(double velocidad) {
 		
 		System.out.println("El terrestre esta acelerando");
 	}
 
 	@Override
-	public void frenar(int velocidad) {
+	public void frenar(double velocidad) {
 		
 		System.out.println("El terrestre esta frenando");
 	}
 	
-	public int calcularRevolucionesMotor(int fuerza, int radio) {
+	@Override
+	public double calcularRevolucionesMotor(double fuerza, double radio) {
 		
-		return fuerza * radio;
+		this.revolucionesMotor = (1000 * fuerza) / (PI * radio);
+		
+		return this.revolucionesMotor;
+	}
+
+	public void recomendarVelocidad(double velocidadViento) {
+		
 	}
 }

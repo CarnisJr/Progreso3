@@ -1,23 +1,43 @@
 package Logica;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements VehiculoInterfaz {
 	
-	protected int velocidadActual = 0;
-	protected int velocidadMaxima = 0;
+	protected double velocidadActual = 0;
+	protected double velocidadMaxima = 0;
+	protected String tipoVehiculo = "";
 	
-	public Vehiculo(int velocidadActual, int velocidadMaxima) {
+	public Vehiculo(double velocidadActual, double velocidadMaxima) {
 		
 		this.velocidadActual = velocidadActual;
 		this.velocidadMaxima = velocidadMaxima;
 	}
 
-	public abstract void acelerar(int velocidad);
+	public void setTipoVehiculo(String tipoVehiculo) {
+	
+		this.tipoVehiculo = tipoVehiculo;
+	}
 
-	public abstract void frenar(int velocidad);
+	@Override
+	public void acelerar(double velocidad) {
+		
+		System.out.println("No acelera");
+	}
 
+	@Override
+	public void frenar(double velocidad) {
+		
+		System.out.println("No frena");
+	}
+
+	@Override
 	public void imprimir() {
 		
 		System.out.println("Velocidad Actual: " + this.velocidadActual);
 		System.out.println("Velocidad Maxima: " + this.velocidadMaxima);
+		System.out.println("Tipo de Vehiculo: " + this.tipoVehiculo);
 	}
+	
+	public abstract double calcularRevolucionesMotor(double fuerza, double radio);
+	
+	public abstract void recomendarVelocidad(double velocidadViento);
 }
